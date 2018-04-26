@@ -1,0 +1,34 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+	"tslint-eslint-rules",
+	"tslint-microsoft-contrib"
+  ],
+  "jsRules": {},
+  "rules": {
+	"indent": [
+	  true,
+	  "tabs"
+	],
+	"arrow-parens": [
+	  "ban-single-arg-parens"
+	],
+	"object-curly-spacing": [
+	  true,
+	  "always"
+	],
+	"typedef": [
+	  true,
+	  "call-signature",
+	  "parameter",
+	  "property-declaration",
+	  "member-variable-declaration"
+	],
+	"no-console": [
+	  false
+	],
+	"no-default-export": false,
+	"trailing-comma": true,
+	"no-relative-imports": false
+  }
+}

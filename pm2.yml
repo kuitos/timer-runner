@@ -1,0 +1,7 @@
+name: timer
+script: npm
+args: start
+error_file: ./logs/err.log
+out_file: ./logs/out.log
+merge_logs: true
+log_date_format: YYYY-MM-DD HH:mm:ss Z

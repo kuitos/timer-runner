@@ -1,0 +1,30 @@
+{
+  "name": "timer",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run tsc && node lib/index.js",
+    "tsc": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "tslint src/**/*.ts",
+    "prepush": "npm run lint"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "js-yaml": "^3.11.0",
+    "node-schedule": "^1.2.5",
+    "tiny-glob": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^3.11.1",
+    "@types/node-schedule": "^1.2.1",
+    "husky": "^0.14.3",
+    "tslint": "^5.8.0",
+    "tslint-eslint-rules": "^4.1.1",
+    "tslint-microsoft-contrib": "^5.0.3",
+    "typescript": "^2.8.1"
+  }
+}
