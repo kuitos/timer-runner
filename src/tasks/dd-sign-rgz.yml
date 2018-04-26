@@ -1,7 +1,7 @@
-name: 叮咚买菜-签到176
+name: 叮咚买菜-签到rgz
 rule:
   hour: 0
-  minute: 1
+  minute: 2
   dayOfWeek: [0, 1, 2, 3, 4, 5, 6]
 api:
   url: https://ddxq.mobi/api/v2/user/sign/
@@ -11,11 +11,11 @@ api:
       host: ddxq.mobi
       origin: https://maicai.m.ddxq.mobi
       content-type: application/x-www-form-urlencoded
-      cookie: $dd-176-sign-cookie
+      cookie: $dd-rgz-sign-cookie
       x-requested-with: com.yaya.zone
     data:
       api_version: 8.6.0
       app_client_id: 3
       latitude: 0
       longitude: 0
-      station_id:
+      station_id: 59e5b5df936edf8b2e8f235b
