@@ -1,4 +1,2 @@
 # timer
-🧝‍♂️a simple, configurable timer runner
-
-yaml-based configurable timer runner
+⏲🧝‍♂️️a simple, YAML-based configurable timer runner
