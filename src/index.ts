@@ -13,7 +13,6 @@ import tinyGlob from 'tiny-glob';
 import { promisify } from 'util';
 import http from './http';
 
-
 const readFilePromise: (path: string, encoding: string) => Promise<string> = promisify(readFile);
 const taskDir = path.join(__dirname, '../src/tasks');
 
