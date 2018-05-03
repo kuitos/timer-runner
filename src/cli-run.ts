@@ -10,6 +10,16 @@ programs
 	.option('-s, --secret <secret>', 'secret file path, default secret.yml in current dir', path.join(process.cwd(), './secret.yml'))
 	.parse(process.argv);
 
+process.on('unhandledRejection', (error) => {
+	console.log(error.stack);
+	process.exit(1);
+});
+
+process.on('uncaughtException', (error) => {
+	console.log(error.stack);
+	process.exit(1);
+});
+
 process.on('SIGINT', () => {
 	process.exit();
 });

@@ -11,9 +11,12 @@
   },
   "author": "Kuitos",
   "bin": {
-    "timer": "./bin/timer-cli.js",
-    "timer-run": "./bin/timer-cli-run.js"
+    "timer": "./bin/cli.js",
+    "timer-run": "./bin/cli-run.js"
   },
+  "files": [
+    "bin"
+  ],
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",

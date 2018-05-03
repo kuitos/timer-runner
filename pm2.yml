@@ -1,5 +1,5 @@
 name: timer
-script: timer
+script: timer-runner
 args: run
 error_file: ./logs/err.log
 out_file: ./logs/out.log

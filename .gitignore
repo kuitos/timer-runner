@@ -1,6 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
+.DS_Store
 .idea/
-lib/
 node_modules/
 tasks/
 secret.yml
