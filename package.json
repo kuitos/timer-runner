@@ -1,6 +1,6 @@
 {
   "name": "timer-runner",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a YAML-based configurable command line timer runner",
   "scripts": {
     "start": "npm run build && node ./bin/timer-cli.js run",
