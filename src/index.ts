@@ -16,39 +16,29 @@ import http from './http';
 const readFilePromise: (path: string, encoding: string) => Promise<string> = promisify(readFile);
 const taskDir = path.join(__dirname, '../src/tasks');
 
-type IApi = {
-	url: string;
-	method: 'get' | 'post';
-	config: AxiosRequestConfig;
+type Error = {
+	field: string;
+	assert: boolean;
+	msg: string;
 };
 
 type ITask = {
 	name: string;
 	rule: RecurrenceRule;
-	api: IApi;
+	api: AxiosRequestConfig;
+	error: Error;
 };
 
 async function fetch<T>(task: ITask): Promise<T | null> {
 
-	const { api: { url, method, config } } = task;
+	const { api: config, error: { field, assert } } = task;
+	const { data } = await http.request(config);
 
-	switch (method.toLowerCase()) {
-
-		case 'get': {
-			const response = await http.get<T>(url, config);
-
-			return response.data;
-		}
-
-		case 'post': {
-			const response = await http.post<T>(url, null, config);
-
-			return response.data;
-		}
-
-		default:
-			return null;
+	if (field && !!data[field] === assert) {
+		console.error(config.url, config.params, data);
 	}
+
+	return data;
 }
 
 async function start(): Promise<void> {
