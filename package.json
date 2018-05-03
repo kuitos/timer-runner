@@ -1,5 +1,5 @@
 {
-  "name": "timer",
+  "name": "timer-runner",
   "version": "0.0.1",
   "description": "a YAML-based configurable command line timer runner",
   "scripts": {
