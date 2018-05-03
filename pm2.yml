@@ -1,6 +1,5 @@
 name: timer
-script: timer-runner
-args: run
+script: timer-run
 error_file: ./logs/err.log
 out_file: ./logs/out.log
 merge_logs: true

@@ -11,12 +11,12 @@ programs
 	.parse(process.argv);
 
 process.on('unhandledRejection', (error) => {
-	console.log(error.stack);
+	console.error(error.stack);
 	process.exit(1);
 });
 
 process.on('uncaughtException', (error) => {
-	console.log(error.stack);
+	console.error(error.stack);
 	process.exit(1);
 });
 
