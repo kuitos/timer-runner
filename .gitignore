@@ -2,6 +2,6 @@
 .idea/
 lib/
 node_modules/
-tasks
+tasks/
 secret.yml
 bin/
