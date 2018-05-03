@@ -52,8 +52,9 @@ export default async function start(tasks: string, secret: string): Promise<void
 		const task: ITask = JSON.parse(JSON.stringify(taskConfig, (_, v) => {
 
 			if (variables && variables.hasOwnProperty(v)) {
-				// noinspection TsLint
+				// tslint:disable-next-line
 				return (variables as any)[v];
+
 			}
 
 			return v;
@@ -65,7 +66,7 @@ export default async function start(tasks: string, secret: string): Promise<void
 
 				try {
 					console.info(`-------------------> ${task.name}: task starting!`);
-					// noinspection TsLint
+					// tslint:disable-next-line
 					await fetch(task as ITask);
 					console.info(`-------------------> ${task.name}: task finished!`);
 				} catch (e) {

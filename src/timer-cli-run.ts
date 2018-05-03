@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-// noinspection TsLint
 import programs from 'commander';
 import path from 'path';
 import { version } from '../package.json';
