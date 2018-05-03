@@ -14,7 +14,6 @@ import { promisify } from 'util';
 import http from './http';
 
 const readFilePromise: (path: string, encoding: string) => Promise<string> = promisify(readFile);
-const taskDir = path.join(__dirname, '../src/tasks');
 
 type Error = {
 	field: string;
@@ -41,14 +40,14 @@ async function fetch<T>(task: ITask): Promise<T | null> {
 	return data;
 }
 
-async function start(): Promise<void> {
+export default async function start(tasks: string, secret: string): Promise<void> {
 
-	const taskFiles = await tinyGlob('*.yml', { cwd: taskDir, filesOnly: true });
-	const variables = load(await readFilePromise(path.join(__dirname, '../secret.yml'), 'utf-8'));
+	const taskFiles = await tinyGlob('*.yml', { cwd: tasks, filesOnly: true });
+	const variables = load(await readFilePromise(secret, 'utf-8'));
 
 	taskFiles.forEach(async taskFile => {
 
-		const taskConfig = load(await readFilePromise(path.join(taskDir, taskFile), 'utf-8'));
+		const taskConfig = load(await readFilePromise(path.join(tasks, taskFile), 'utf-8'));
 
 		const task: ITask = JSON.parse(JSON.stringify(taskConfig, (_, v) => {
 
@@ -78,12 +77,3 @@ async function start(): Promise<void> {
 		}
 	});
 }
-
-(async () => {
-	try {
-		await start();
-		console.info('-------------------> app initialized!');
-	} catch (e) {
-		console.error(e);
-	}
-})();

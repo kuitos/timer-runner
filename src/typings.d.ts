@@ -18,3 +18,8 @@ declare module 'tiny-glob' {
 	/* tslint:disable */
 	export = glob;
 }
+
+declare module '*.json' {
+	const text: { version: string; };
+	export = text;
+}
