@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "description": "a YAML-based configurable command line timer runner",
   "scripts": {
-    "start": "npm run build && node ./bin/timer-cli.js run",
+    "start": "npm run build && node ./bin/cli.js run",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "tslint 'src/**/*.ts'",

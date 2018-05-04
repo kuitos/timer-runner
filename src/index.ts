@@ -30,13 +30,13 @@ type ITask = {
 
 async function fetch<T>(task: ITask): Promise<T | null> {
 
-	const { api: config, error } = task;
+	const { name, api: config, error } = task;
 	const { data } = await http.request(config);
 
 	if (error) {
 		const { field, assert } = error;
 		if (field && !!data[field] === assert) {
-			console.error(config.url, config.params, data);
+			console.error(name, config.url, config.params, data);
 		}
 	}
 
