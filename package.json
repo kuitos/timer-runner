@@ -1,6 +1,6 @@
 {
   "name": "timer-runner",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "a YAML-based configurable command line timer runner",
   "scripts": {
     "start": "npm run build && node ./bin/timer-cli.js run",
@@ -17,6 +17,7 @@
   "files": [
     "bin"
   ],
+  "repository": "https://github.com/kuitos/timer-runner.git",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
