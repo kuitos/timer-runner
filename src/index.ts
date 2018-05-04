@@ -25,16 +25,19 @@ type ITask = {
 	name: string;
 	rule: RecurrenceRule;
 	api: AxiosRequestConfig;
-	error: Error;
+	error?: Error;
 };
 
 async function fetch<T>(task: ITask): Promise<T | null> {
 
-	const { api: config, error: { field, assert } } = task;
+	const { api: config, error } = task;
 	const { data } = await http.request(config);
 
-	if (field && !!data[field] === assert) {
-		console.error(config.url, config.params, data);
+	if (error) {
+		const { field, assert } = error;
+		if (field && !!data[field] === assert) {
+			console.error(config.url, config.params, data);
+		}
 	}
 
 	return data;
