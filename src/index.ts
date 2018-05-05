@@ -9,6 +9,7 @@ import { readFile } from 'fs';
 import { load } from 'js-yaml';
 import { RecurrenceRule, scheduleJob } from 'node-schedule';
 import path from 'path';
+import qs from 'querystring';
 import tinyGlob from 'tiny-glob';
 import { promisify } from 'util';
 import http from './http';
@@ -31,16 +32,21 @@ type ITask = {
 async function fetch<T>(task: ITask): Promise<T | null> {
 
 	const { name, api: config, error } = task;
-	const { data } = await http.request(config);
+
+	if (config.headers['content-type'] && config.headers['content-type'].indexOf('application/x-www-form-urlencoded') !== -1) {
+		config.data = qs.stringify(config.data);
+	}
+
+	const response = await http.request(config);
 
 	if (error) {
 		const { field, assert } = error;
-		if (field && !!data[field] === assert) {
-			console.error(name, config.url, config.params, data);
+		if (field && !!response.data[field] === assert) {
+			console.error(name, response);
 		}
 	}
 
-	return data;
+	return response.data;
 }
 
 export default async function start(tasks: string, secret: string): Promise<void> {
