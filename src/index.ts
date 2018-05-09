@@ -31,7 +31,7 @@ type ITask = {
 
 async function fetch<T>(task: ITask): Promise<T | null> {
 
-	const { name, api: config, error } = task;
+	const { api: config, error } = task;
 
 	if (config.headers['content-type'] && config.headers['content-type'].indexOf('application/x-www-form-urlencoded') !== -1) {
 		config.data = qs.stringify(config.data);
@@ -42,7 +42,7 @@ async function fetch<T>(task: ITask): Promise<T | null> {
 	if (error) {
 		const { field, assert } = error;
 		if (field && !!response.data[field] === assert) {
-			console.error(name, response);
+			throw response;
 		}
 	}
 
