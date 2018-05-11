@@ -33,6 +33,10 @@ async function fetch<T>(task: ITask): Promise<T | null> {
 
 	const { api: config, error } = task;
 
+	if (process.env.LOGGER_LEVEL === 'debug') {
+		console.log(task.name, config);
+	}
+
 	if (config.headers['content-type'] && config.headers['content-type'].indexOf('application/x-www-form-urlencoded') !== -1) {
 		config.data = qs.stringify(config.data);
 	}
