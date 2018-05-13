@@ -7,6 +7,7 @@
 import { AxiosRequestConfig } from 'axios';
 import { readFile } from 'fs';
 import { load } from 'js-yaml';
+import cloneDeep from 'lodash.clonedeep';
 import { RecurrenceRule, scheduleJob } from 'node-schedule';
 import path from 'path';
 import qs from 'querystring';
@@ -31,14 +32,15 @@ type ITask = {
 
 async function fetch<T>(task: ITask): Promise<T | null> {
 
-	const { api: config, error } = task;
-
-	if (process.env.LOGGER_LEVEL === 'debug') {
-		console.log(task.name, config);
-	}
+	// create a new task copy to keep original data maintained
+	const { api: config, error } = cloneDeep(task);
 
 	if (config.headers['content-type'] && config.headers['content-type'].indexOf('application/x-www-form-urlencoded') !== -1) {
 		config.data = qs.stringify(config.data);
+	}
+
+	if (process.env.LOGGER_LEVEL === 'debug') {
+		console.log(task.name, config);
 	}
 
 	const response = await http.request(config);
