@@ -10,8 +10,8 @@ programs
 	.option('-s, --secret <secret>', 'secret file path, default secret.yml in current dir', path.join(process.cwd(), './secret.yml'))
 	.parse(process.argv);
 
-process.on('unhandledRejection', (error) => {
-	console.error(error.stack);
+process.on('unhandledRejection', (reason) => {
+	console.error(reason);
 	process.exit(1);
 });
 
