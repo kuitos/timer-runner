@@ -55,14 +55,14 @@ async function fetch<T>(task: ITask): Promise<T | null> {
 	return response.data;
 }
 
-export default async function start(tasks: string, secret: string): Promise<void> {
+export default async function start(tasksDir: string, secret: string): Promise<void> {
 
-	const taskFiles = await tinyGlob('*.yml', { cwd: tasks, filesOnly: true });
+	const taskFilePaths = await tinyGlob('*.yml', { cwd: tasksDir, filesOnly: true });
 	const variables = load(await readFilePromise(secret, 'utf-8'));
 
-	taskFiles.forEach(async taskFile => {
+	taskFilePaths.forEach(async taskFilePath => {
 
-		const taskConfig = load(await readFilePromise(path.join(tasks, taskFile), 'utf-8'));
+		const taskConfig = load(await readFilePromise(path.join(tasksDir, taskFilePath), 'utf-8'));
 
 		const task: ITask = JSON.parse(JSON.stringify(taskConfig, (_, v) => {
 
