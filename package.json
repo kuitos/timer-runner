@@ -20,7 +20,7 @@
   "repository": "https://github.com/kuitos/timer-runner.git",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "commander": "^2.15.1",
     "js-yaml": "^3.11.0",
     "lodash.clonedeep": "^4.5.0",
